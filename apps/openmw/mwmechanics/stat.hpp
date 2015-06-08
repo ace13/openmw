@@ -4,6 +4,7 @@
 #undef min
 #undef max
 
+#include <algorithm>
 #include <limits>
 
 #include <components/esm/statstate.hpp>
