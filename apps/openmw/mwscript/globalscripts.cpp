@@ -6,6 +6,7 @@
 
 #include <components/misc/stringops.hpp>
 #include <components/esm/globalscript.hpp>
+#include <components/esm/esmwriter.hpp>
 
 #include "../mwworld/esmstore.hpp"
 

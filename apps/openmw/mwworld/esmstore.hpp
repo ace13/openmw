@@ -1,8 +1,10 @@
 #ifndef OPENMW_MWWORLD_ESMSTORE_H
 #define OPENMW_MWWORLD_ESMSTORE_H
 
+#include <sstream>
 #include <stdexcept>
 
+#include <components/misc/stringops.hpp>
 #include <components/esm/records.hpp>
 #include "store.hpp"
 
