@@ -320,7 +320,6 @@ namespace MWWorld
 
 	template class IndexedStore<ESM::MagicEffect>;
 	template class IndexedStore<ESM::Skill>;
-}
 
 //
 // Non-generic
@@ -762,6 +761,7 @@ bool MWWorld::Store<ESM::Cell>::erase(int x, int y) {
 
 // ESM::Dialogue
 
+template<>
 void MWWorld::Store<ESM::Dialogue>::setUp()
 {
 	// DialInfos marked as deleted are kept during the loading phase, so that the linked list
@@ -780,6 +780,7 @@ void MWWorld::Store<ESM::Dialogue>::setUp()
 	}
 }
 
+template<>
 void MWWorld::Store<ESM::Dialogue>::load(ESM::ESMReader &esm, const std::string &id)
 {
 	std::string idLower = Misc::StringUtils::lowerCase(id);
@@ -799,7 +800,7 @@ void MWWorld::Store<ESM::Dialogue>::load(ESM::ESMReader &esm, const std::string 
 MWWorld::Store<ESM::Land>::~Store()
 {
 	for (std::vector<ESM::Land *>::const_iterator it =
-		mStatic.cbegin(); it != mStatic.cend(); ++it)
+		mStatic.begin(); it != mStatic.end(); ++it)
 	{
 		delete *it;
 	}
@@ -1039,6 +1040,7 @@ const ESM::Pathgrid *MWWorld::Store<ESM::Pathgrid>::find(const ESM::Cell &cell) 
 
 // ESM::Script
 
+template<>
 void MWWorld::Store<ESM::Script>::load(ESM::ESMReader &esm, const std::string &id)
 {
 	ESM::Script scpt;
@@ -1054,7 +1056,7 @@ void MWWorld::Store<ESM::Script>::load(ESM::ESMReader &esm, const std::string &i
 
 
 // ESM::StartScript
-
+template<>
 void MWWorld::Store<ESM::StartScript>::load(ESM::ESMReader &esm, const std::string &id)
 {
 	ESM::StartScript s;
@@ -1067,8 +1069,6 @@ void MWWorld::Store<ESM::StartScript>::load(ESM::ESMReader &esm, const std::stri
 		inserted.first->second = s;
 }
 
-namespace MWWorld
-{
 	// Explicit instantiations
 
 	template class Store<ESM::Activator>;
