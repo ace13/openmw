@@ -47,6 +47,6 @@ namespace ESM
 			esm.writeHNT("STPR", mProgress);
 	}
 
-	template class StatState<int>;
-	template class StatState<float>;
+	template struct StatState<int>;
+	template struct StatState<float>;
 }
