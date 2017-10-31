@@ -23,29 +23,6 @@
     "*.la", "*.a"],
     "modules": [
       {
-        "name": "fribidi",
-        "sources": [
-          {
-            "type": "archive",
-            "url": "http://fribidi.org/download/fribidi-0.19.7.tar.bz2",
-            "sha256": "08222a6212bbc2276a2d55c3bf370109ae4a35b689acbc66571ad2a670595a8e"
-          }
-        ],
-        "cleanup": [
-          "fribidi",
-          "/include",
-          "/lib/*.a",
-          "/lib/*.la",
-          "/lib/pkgconfig",
-          "/man",
-          "/share/aclocal",
-          "/share/doc",
-          "/share/gtk-doc",
-          "/share/man",
-          "/share/pkgconfig"
-        ]
-      },
-      {
         "name": "libmp3lame",
         "sources": [
           {
@@ -333,7 +310,7 @@
           {
             "type": "shell",
             "commands": [
-              "sed -i s:Icon=openmw:Icon=org.openmw.OpenMW.png: files/openmw.desktop"
+              "sed -i s:Icon=openmw:Icon=org.openmw.OpenMW: files/openmw.desktop"
             ]
           }
         ],
