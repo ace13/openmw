@@ -5,8 +5,6 @@
   "sdk": "org.gnome.Sdk",
   "branch": "0.42.0",
   "command": "openmw-launcher",
-  "rename-appdata-file": "openmw.appdata.xml",
-  "rename-desktop-file": "openmw.desktop",
   "separate-locales": false,
   "finish-args": [
     "--share=ipc", "--socket=x11", "--device=dri",
@@ -163,7 +161,13 @@
           "/lib/*.prl",
           "/lib/pkgconfig",
           "/lib/qt4/mkspecs",
-          "/lib/qt4/q3porting.xml"
+          "/lib/qt4/q3porting.xml",
+
+          "libQtCLucene*",
+          "libQtDesigner*",
+          "libQtHelp*",
+          "libQtSql*",
+          "libQtXml*"
         ]
       },
       {
@@ -288,7 +292,31 @@
           "/include",
           "/lib/*.a",
           "/lib/*.la",
-          "/lib/pkgconfig"
+          "/lib/pkgconfig",
+          "libboost_atomic*",
+          "libboost_chrono*",
+          "libboost_container*",
+          "libboost_context*",
+          "libboost_coroutine*",
+          "libboost_date_time*",
+          "libboost_fiber*",
+          "libboost_graph*",
+          "libboost_iostreams*",
+          "libboost_locale*",
+          "libboost_log*",
+          "libboost_math*",
+          "libboost_prg_exec_monitor*",
+          "libboost_python*",
+          "libboost_random*",
+          "libboost_regex*",
+          "libboost_serialization*",
+          "libboost_signals*",
+          "libboost_thread*",
+          "libboost_timer*",
+          "libboost_type_erasure*",
+          "libboost_unit_test_framework*",
+          "libboost_wave*",
+          "libboost_wserialization*"
         ]
       },
       {
@@ -298,8 +326,7 @@
         "config-opts": [
           "-DBUILD_BSATOOL=no",
           "-DBUILD_ESMTOOL=no",
-          "-DBUILD_MYGUI_PLUGIN=no",
-          "-DBUILD_OPENCS=no"
+          "-DBUILD_MYGUI_PLUGIN=no"
         ],
         "sources" : [
           {
@@ -310,13 +337,23 @@
           {
             "type": "shell",
             "commands": [
-              "sed -i s:Icon=openmw:Icon=org.openmw.OpenMW: files/openmw.desktop"
+              "sed -i s:Icon=openmw:Icon=org.openmw.OpenMW.png: files/openmw.desktop",
+              "sed -i s:Icon=openmw-cs:Icon=org.openmw.OpenMW.OpenCS.png: files/openmw-cs.desktop"
             ]
           }
         ],
         "post-install": [
+          "mv /app/share/applications/openmw.desktop /app/share/applications/org.openmw.OpenMW.desktop",
+          "mv /app/share/applications/openmw-cs.desktop /app/share/applications/org.openmw.OpenMW.OpenCS.desktop",
+
+          "mkdir -p /app/share/appdata",
+          "mv /app/share/metainfo/openmw.appdata.xml /app/share/appdata/org.openmw.OpenMW.desktop",
+
           "mkdir -p /app/share/icons",
-          "cp /app/share/pixmaps/openmw.png /app/share/icons/org.openmw.OpenMW.png"
+          "cp /app/share/pixmaps/openmw.png /app/share/icons/org.openmw.OpenMW.png",
+          "cp /app/share/pixmaps/openmw.png /app/share/pixmaps/org.openmw.OpenMW.png",
+          "cp /app/share/pixmaps/openmw-cs.png /app/share/icons/org.openmw.OpenMW.OpenCS.png",
+          "cp /app/share/pixmaps/openmw-cs.png /app/share/pixmaps/org.openmw.OpenMW.OpenCS.png"
         ]
       }
     ]
