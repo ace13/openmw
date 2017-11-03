@@ -3,7 +3,7 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "3.24",
   "sdk": "org.gnome.Sdk",
-  "branch": "0.42.0",
+  "branch": "master",
   "command": "openmw-launcher",
   "separate-locales": false,
   "finish-args": [
